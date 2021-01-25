@@ -12,7 +12,7 @@ class Profile extends Model
     use HasFactory;
 
     /**
-     * Relation one to one reverse with Users
+     * Relation one to one reverse with User
      */
     public function user(){
         return $this->belongsTo(User::class);
