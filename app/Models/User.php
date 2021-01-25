@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Profile;
+use App\Models\Dog;
 
 class User extends Authenticatable
 {
@@ -58,4 +60,18 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Relation one to one with Profile
+     */
+    public function profile(){
+        return $this->hasOne(Profile::class);
+    }
+
+    /**
+     * Relation one to one with Dog
+     */
+    public function dog(){
+        return $this->hasOne(Dog::class);
+    }
 }
