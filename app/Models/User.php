@@ -69,9 +69,9 @@ class User extends Authenticatable
     }
 
     /**
-     * Relation one to one with Dog
+     * Relation one to many with Dog
      */
-    public function dog(){
-        return $this->hasOne(Dog::class);
+    public function dogs(){
+        return $this->hasMany(Dog::class);
     }
 }
