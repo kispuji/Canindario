@@ -22,7 +22,7 @@ class CreateObediencesOrdersTable extends Migration
                 ->on('orders')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-                $table->foreign('obediences_id')
+            $table->foreign('obediences_id')
                 ->references('id')
                 ->on('obediences')
                 ->onDelete('cascade')

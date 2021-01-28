@@ -18,6 +18,7 @@ class CreateDogsTable extends Migration
             $table->string('name', 45);
             $table->integer('age')->nullable();
             $table->string('specialty', 45)->nullable();
+            $table->string('race')->nullable();
             $table->string('marking', 45)->nullable();
             $table->string('microchip', 15)->nullable();
             $table->unsignedBigInteger('user_id')->unique();
