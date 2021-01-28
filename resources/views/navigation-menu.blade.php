@@ -16,7 +16,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
+                <div class="w-20">
                     <a href="{{ route('home') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
@@ -34,8 +34,8 @@
                 </div>
             </div>
 
+            <!-- Teams Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
                         <x-jet-dropdown align="right" width="60">
@@ -88,6 +88,7 @@
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                     @auth
+                     <!-- Foto menu hamburguesa -->
                         <x-jet-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -141,7 +142,6 @@
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
                         <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                     @endauth
-
                 </div>
             </div>
 
@@ -161,9 +161,9 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
 
+            {{-- Link de navegación --}}
             @foreach ($nav_links as $nav_link)
-                
-            
+
                 <x-jet-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
                     {{ $nav_link['name'] }}
                 </x-jet-responsive-nav-link>
@@ -187,9 +187,10 @@
                         <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                     </div>
                 </div>
-
+                
+                <!-- Account Management -->
                 <div class="mt-3 space-y-1">
-                    <!-- Account Management -->
+
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                         {{ __('Profile') }}
                     </x-jet-responsive-nav-link>
