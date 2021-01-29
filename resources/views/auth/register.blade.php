@@ -50,7 +50,9 @@
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('¿Ya estas registrado?') }}
                 </a>
-                <x-button-volver></x-button-volver>
+                <x-button-volver>
+                    {{__('Volver')}}
+                </x-button-volver>
                 <x-jet-button class="ml-4">
                     {{ __('Registrar') }}
                 </x-jet-button>

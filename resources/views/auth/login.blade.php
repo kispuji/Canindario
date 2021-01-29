@@ -38,7 +38,9 @@
                         {{ __('¿Has olvidado la contraseña?') }}
                     </a>
                 @endif
-                <x-button-volver></x-button-volver>
+                <x-button-volver>
+                    {{__('Volver')}}
+                </x-button-volver>
                 <x-jet-button class="ml-4">
                     {{ __('Login') }}
                 </x-jet-button>

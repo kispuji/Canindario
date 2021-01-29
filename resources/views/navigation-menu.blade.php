@@ -34,8 +34,10 @@
                 </div>
             </div>
 
-            <!-- Teams Dropdown -->
+            <!-- Menu de la derecha -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+                
+                <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
                         <x-jet-dropdown align="right" width="60">
@@ -88,8 +90,9 @@
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                     @auth
-                     <!-- Foto menu hamburguesa -->
+                <!-- Menu hamburguesa -->
                         <x-jet-dropdown align="right" width="48">
+                            <!-- Foto -->
                             <x-slot name="trigger">
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                     <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
@@ -107,15 +110,15 @@
                                     </span>
                                 @endif
                             </x-slot>
-
+                            <!-- Links -->
                             <x-slot name="content">
                                 <!-- Account Management -->
                                 <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Manage Account') }}
+                                    {{ __('Administrar Cuenta') }}
                                 </div>
 
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                    {{ __('Profile') }}
+                                    {{ __('Perfil') }}
                                 </x-jet-dropdown-link>
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -133,14 +136,14 @@
                                     <x-jet-dropdown-link href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                     this.closest('form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Salir') }}
                                     </x-jet-dropdown-link>
                                 </form>
                             </x-slot>
                         </x-jet-dropdown>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrar</a>
                     @endauth
                 </div>
             </div>
@@ -192,7 +195,7 @@
                 <div class="mt-3 space-y-1">
 
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                        {{ __('Profile') }}
+                        {{ __('Perfil') }}
                     </x-jet-responsive-nav-link>
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -208,7 +211,7 @@
                         <x-jet-responsive-nav-link href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                            {{ __('Logout') }}
+                            {{ __('Salir') }}
                         </x-jet-responsive-nav-link>
                     </form>
 
@@ -247,10 +250,10 @@
         @else
             <div class="py-1 border-t border-gray-200">
                 <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('Login')">
-                    Login
+                    {{__('Login')}}
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('Register')">
-                    Register
+                    {{__('Registrar')}}
                 </x-jet-responsive-nav-link>
             </div>
         @endauth
