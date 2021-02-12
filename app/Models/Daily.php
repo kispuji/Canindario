@@ -23,6 +23,6 @@ class Daily extends Model
      * Relation one to one reverse Training
      */
     public function training(){
-        $this->belongsToMany(Training::class);
+        $this->belongsTo(Training::class);
     }
 }

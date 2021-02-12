@@ -31,7 +31,7 @@ class Obedience extends Model
      * Relation many to many Order
      */
     public function orders(){
-        $this->belongsToMany(Order::class);
+        $this->hasMany(Order::class);
     }
 
 }

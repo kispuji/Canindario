@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Profile;
+use App\Models\Workers;
 
 class Address extends Model
 {
@@ -14,6 +14,6 @@ class Address extends Model
      * Relation ono to one inversa with Profile
      */
     public function porfile(){
-            return $this->belongsTo(Profile::class);
+            return $this->belongsTo(Workers::class);
     }
 }

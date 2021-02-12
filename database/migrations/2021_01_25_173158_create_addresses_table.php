@@ -21,10 +21,10 @@ class CreateAddressesTable extends Migration
             $table->string('city', 45)->nullable();
             $table->integer('cp')->nullable();
             $table->string('country', 45)->nullable();
-            $table->unsignedBigInteger('profile_id')->unique();
-            $table->foreign('profile_id')
+            $table->unsignedBigInteger('worker_id');
+            $table->foreign('worker_id')
                 ->references('id')
-                ->on('profiles')
+                ->on('workers')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();

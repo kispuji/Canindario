@@ -5,21 +5,33 @@
             'route' => route('home'),
             'active' => request()->routeIs('home')
         ],
+        [
+            'name' => "Perfil",
+            'route' => route('profile'),
+            'active' => request()->routeIs('profile')
+        ]
     ]
 @endphp
 
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     
     
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-18">
             <div class="flex">
                 <!-- Logo -->
-                <div class="w-20">
-                    <a href="{{ route('home') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
-                    </a>
+                <div class="w-20 mt-2">
+                    @auth
+                        <a href="{{ route('dashboard') }}">
+                            <x-jet-application-mark class="block h-9 w-auto" />
+                        </a>
+                    @else
+                        <a href="{{ route('home') }}">
+                            <x-jet-application-mark class="block h-9 w-auto" />
+                        </a>
+                    @endauth
+
                 </div>
 
                 <!-- Navigation Links -->
@@ -118,7 +130,7 @@
                                 </div>
 
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                    {{ __('Perfil') }}
+                                    {{ __('Cuenta') }}
                                 </x-jet-dropdown-link>
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -195,7 +207,7 @@
                 <div class="mt-3 space-y-1">
 
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                        {{ __('Perfil') }}
+                        {{ __('Cuenta') }}
                     </x-jet-responsive-nav-link>
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

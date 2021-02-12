@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Address;
 
-class Profile extends Model
+class Workers extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'surname', 'age'];
 
     /**
      * Relation one to one reverse with User

@@ -31,13 +31,13 @@ class Detection extends Model
      * Relation many to many Sustances
      */
     public function sustances(){
-        $this->belongsToMany(Sustance::class);
+        $this->hasMany(Sustance::class);
     }
 
     /**
      * Relation many to many Sustances
      */
     public function searchPlaces(){
-        $this->belongsToMany(Searchplace::class);
+        $this->hasMany(Searchplace::class);
     }
 }

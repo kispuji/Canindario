@@ -25,7 +25,7 @@
             </div>
 
             <div class="flex items-center justify-between mt-4">
-                <x-button-volver></x-button-volver>
+                <x-button-volver>{{__('Volver')}}</x-button-volver>
                 <x-jet-button>
                     {{ __('Enviar dirección de correo') }}
                 </x-jet-button>
