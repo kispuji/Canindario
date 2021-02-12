@@ -23,9 +23,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 //Cambiar vistas
-Route::middleware(['auth:sanctum', 'verified'])->get('/trabajadores', function () {
-    return view('dashboard');
-})->name('trabajadores');
+Route::middleware(['auth:sanctum', 'verified'])->get('/trabajadores', ProfileForm::class)->name('trabajadores');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/perros', function () {
     return view('dashboard');
