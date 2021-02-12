@@ -22,4 +22,21 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+//Cambiar vistas
+Route::middleware(['auth:sanctum', 'verified'])->get('/trabajadores', function () {
+    return view('dashboard');
+})->name('trabajadores');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/perros', function () {
+    return view('dashboard');
+})->name('perros');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/entrenamientos', function () {
+    return view('dashboard');
+})->name('entrenamientos');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/informes', function () {
+    return view('dashboard');
+})->name('informes');
+
 Route::get('/profile', ProfileForm::class)->name('profile');

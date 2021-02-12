@@ -1,14 +1,30 @@
 @php
     $nav_links = [
         [
+
             'name' => "Home",
-            'route' => route('home'),
-            'active' => request()->routeIs('home')
+            'route' => route('dashboard'),
+            'active' => request()->routeIs('dashboard')
         ],
         [
-            'name' => "Perfil",
-            'route' => route('profile'),
-            'active' => request()->routeIs('profile')
+            'name' => "Trabajadores",
+            'route' => route('trabajadores'),
+            'active' => request()->routeIs('trabajadores')
+        ],
+        [
+            'name' => "Perros",
+            'route' => route('perros'),
+            'active' => request()->routeIs('perros')
+        ],
+        [
+            'name' => "Entrenamientos",
+            'route' => route('entrenamientos'),
+            'active' => request()->routeIs('entrenamientos')
+        ],
+        [
+            'name' => "Informes",
+            'route' => route('informes'),
+            'active' => request()->routeIs('informes')
         ]
     ]
 @endphp
@@ -36,13 +52,13 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    
-                    @foreach ($nav_links as $nav_link)
-                        <x-jet-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
-                            {{ $nav_link['name'] }}
-                        </x-jet-nav-link>
-                    @endforeach
-                    
+                    @auth                       
+                        @foreach ($nav_links as $nav_link)
+                            <x-jet-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                                {{ $nav_link['name'] }}
+                            </x-jet-nav-link>
+                        @endforeach
+                    @endauth
                 </div>
             </div>
 
@@ -177,13 +193,15 @@
         <div class="pt-2 pb-3 space-y-1">
 
             {{-- Link de navegación --}}
-            @foreach ($nav_links as $nav_link)
+            @auth
+                @foreach ($nav_links as $nav_link)
 
-                <x-jet-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
-                    {{ $nav_link['name'] }}
-                </x-jet-responsive-nav-link>
+                    <x-jet-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                        {{ $nav_link['name'] }}
+                    </x-jet-responsive-nav-link>
 
-            @endforeach
+                @endforeach
+            @endauth
         </div>
 
         <!-- Responsive Settings Options -->
