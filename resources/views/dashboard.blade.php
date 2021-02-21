@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-4 h-auto">
+    <div class="h-auto">
 
         <div class="bg-white mx-4 overflow-hidden shadow-xl sm:rounded-lg">
             <x-card></x-card>

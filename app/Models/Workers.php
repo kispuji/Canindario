@@ -11,7 +11,7 @@ class Workers extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'surname', 'age'];
+    protected $fillable = ['name', 'surname', 'age', 'profession', 'user_id'];
 
     /**
      * Relation one to one reverse with User
@@ -21,7 +21,7 @@ class Workers extends Model
     }
 
     /**
-     * Relation ono to one with Address
+     * Relation one to one with Address
      */
     public function address(){
         return $this->hasOne(Address::class);

@@ -10,8 +10,10 @@ class Address extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['street', 'number', 'town', 'city', 'cp', 'country', 'worker_id'];
+
     /**
-     * Relation ono to one inversa with Profile
+     * Relation one to one inversa with Profile
      */
     public function porfile(){
             return $this->belongsTo(Workers::class);
