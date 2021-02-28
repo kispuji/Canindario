@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
  * Componente para crear, listar, actualizar y eliminar trabajadores.
  * Contiene validación de formularios y paginación.
  */
-class ProfileForm extends Component
+class SeccionTrabajadores extends Component
 {
     use WithPagination;
 
@@ -63,7 +63,7 @@ class ProfileForm extends Component
             $existenTrabajadores = true;
         }
 
-        return view('livewire.profile-form', compact('trabajadores', 'existenTrabajadores'));
+        return view('livewire.seccion-trabajadores', compact('trabajadores', 'existenTrabajadores'));
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\ProfileForm;
+use App\Http\Livewire\SeccionTrabajadores;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 //Cambiar vistas
-Route::middleware(['auth:sanctum', 'verified'])->get('/trabajadores', ProfileForm::class)->name('trabajadores');
+Route::middleware(['auth:sanctum', 'verified'])->get('/trabajadores', SeccionTrabajadores::class)->name('trabajadores');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/perros', function () {
     return view('dashboard');
