@@ -27,13 +27,13 @@ class ProfileForm extends Component
     protected $rules =[
         'name' => 'required|max:15',
         'surname' => 'required|max:40',
-        'age' => 'min:0|max:100',
+        'age' => 'numeric|gte:18|lte:100',
         'profession' => 'max:25',
         'street' => 'max:40',
         'number' => 'max:500',
         'town' => 'max:25',
         'city' => 'max:25',
-        'cp' =>  'max:5',       
+        'cp' =>  'numeric|max:5',       
         'country' => 'max:25',
     ];
 
