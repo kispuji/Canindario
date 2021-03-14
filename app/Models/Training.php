@@ -4,32 +4,52 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Daily;
-use App\Models\Obedience;
-use App\Models\Detection;
 
 class Training extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['date', 'zone', 'time', 'series', 'criterion', 'user_id',
+    'worker_id', 'dog_id', 'technique_id'];
+    
+    /**
+     * Relation one to one reverse Worker
+     */
+    public function worker(){
+        return $this->belongsTo(Workers::class);
+    }
+
+    /**
+     * Relation one to one reverse Dog
+     */
+    public function dog(){
+        return $this->belongsTo(Dog::class);
+    }
     /**
      * Relation one to one Daily
      */
     public function daily(){
-        $this->hasOne(Daily::class);
+        return $this->hasOne(Daily::class);
     }
 
     /**
      * Relation one to one Obedience
      */
     public function obedience(){
-        $this->hasOne(Obedience::class);
+        return $this->hasOne(Obedience::class);
     }
 
     /**
      * Relation one to one Detection
      */
     public function detection(){
-        $this->hasOne(Detection::class);
+        return $this->hasOne(Detection::class);
+    }
+
+    /**
+     * Relation one to one Technique
+     */
+    public function technique(){
+        return $this->hasOne(technique::class);
     }
 }

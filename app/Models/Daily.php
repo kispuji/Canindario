@@ -4,25 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Dog;
-use App\Models\Training;
 
 
 class Daily extends Model
 {
     use HasFactory;
 
-    /**
-     * Relation one to one reverse Dog
-     */
-    public function dog(){
-        $this->belongsTo(Dog::class);
-    }
+    protected $fillable = ['type_id', 'duration', 'meters', 'training_id'];
 
     /**
      * Relation one to one reverse Training
      */
     public function training(){
-        $this->belongsTo(Training::class);
+        return $this->belongsTo(Training::class);
+    }
+
+    /**
+     * Relation one to one reverse Type
+     */
+    public function type(){
+        return $this->belongsTo(Type::class);
     }
 }

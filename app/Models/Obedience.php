@@ -4,34 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Dog;
-use App\Models\Training;
-use App\Models\Order;
-
 
 class Obedience extends Model
 {
     use HasFactory;
 
-    /**
-     * Relation one to one reverse Dog
-     */
-    public function dog(){
-        $this->belongsTo(Dog::class);
-    }
+    protected $fillable = ['positives', 'negatives', 'failures', 'duration', 'training_id',
+     'order_id'];
 
     /**
      * Relation one to one reverse Training
      */
     public function training(){
-        $this->belongsTo(Training::class);
+        return $this->belongsTo(Training::class);
     }
 
     /**
-     * Relation many to many Order
+     * Relation one to one reverse Order
      */
-    public function orders(){
-        $this->hasMany(Order::class);
+    public function order(){
+        return $this->belongsTo(Order::class);
     }
 
 }

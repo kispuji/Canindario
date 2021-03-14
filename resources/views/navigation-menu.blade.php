@@ -19,7 +19,7 @@
         [
             'name' => "Entrenamientos",
             'route' => route('entrenamientos'),
-            'active' => request()->routeIs('entrenamientos')
+            'active' => request()->routeIs('entrenamientos', 'diarios', 'obediencia', 'busqueda')
         ],
         [
             'name' => "Informes",

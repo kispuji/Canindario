@@ -4,40 +4,33 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Daily;
-use App\Models\Obedience;
-use App\Models\Detection;
 
 class Dog extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'age', 'race', 'specialty', 'marking', 'microchip', 
+    'amount_food', 'user_id', 'worker_id'];
+
+    /**
+     * Relation one to one reverse with User
+     */
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Relation one to one reverse with Worker
+     */
+    public function worker(){
+        return $this->belongsTo(Workers::class);
+    }
+
     /**
      * Relation one to one reverse with Users
      */
-    public function user(){
-        $this->belongsTo(User::class);
+    public function trainings(){
+        return $this->hasMany(Training::class);
     }
 
-    /**
-     * Relation one to many with Daily
-     */
-    public function daylies(){
-        $this->hasMany(Daily::class);
-    }
-
-    /**
-     * Relation one to many with Daily
-     */
-    public function obediences(){
-        $this->hasMany(Obedience::class);
-    }
-
-    /**
-     * Relation one to many with Daily
-     */
-    public function detections(){
-        $this->hasMany(Detection::class);
-    }
 }

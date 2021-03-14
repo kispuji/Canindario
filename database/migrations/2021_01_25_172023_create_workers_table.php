@@ -15,10 +15,10 @@ class CreateWorkersTable extends Migration
     {
         Schema::create('workers', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 45);
-            $table->string('surname', 45);
+            $table->string('name', 15);
+            $table->string('surname', 40);
             $table->integer('age')->nullable();
-            $table->string('profession', 45)->nullable();
+            $table->string('profession', 25)->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')

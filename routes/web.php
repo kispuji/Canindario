@@ -1,7 +1,14 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SeccionTrabajadores;
+use App\Http\Livewire\SeccionPerros;
+use App\Http\Livewire\SeccionEntBusqueda;
+use App\Http\Livewire\SeccionEntDiarios;
+use App\Http\Livewire\SeccionEntObediencia;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,15 +30,22 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 //Cambiar vistas
-Route::middleware(['auth:sanctum', 'verified'])->get('/trabajadores', SeccionTrabajadores::class)->name('trabajadores');
+Route::middleware(['auth:sanctum', 'verified'])->get('/trabajadores', 
+SeccionTrabajadores::class)->name('trabajadores');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/perros', function () {
-    return view('dashboard');
-})->name('perros');
+Route::middleware(['auth:sanctum', 'verified'])->get('/perros', 
+SeccionPerros::class)->name('perros');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/entrenamientos', function () {
-    return view('dashboard');
+    return view('entrenamientos');
 })->name('entrenamientos');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/entrenamientos/diarios', 
+SeccionEntDiarios::class)->name('diarios');
+Route::middleware(['auth:sanctum', 'verified'])->get('/entrenamientos/obediencia', 
+SeccionEntObediencia::class)->name('obediencia');
+Route::middleware(['auth:sanctum', 'verified'])->get('/entrenamientos/busqueda', 
+SeccionEntBusqueda::class)->name('busqueda');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/informes', function () {
     return view('dashboard');

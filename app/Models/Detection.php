@@ -4,40 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Training;
-use App\Models\Dog;
-use App\Models\Sustance;
-use App\Models\Searchplace;
 
 class Detection extends Model
 {
     use HasFactory;
 
-     /**
-     * Relation one to one reverse Dog
-     */
-    public function dog(){
-        $this->belongsTo(Dog::class);
-    }
+    protected $fillable = ['positives', 'negatives', 'failures', 'search_time', 'focus_time',
+    'nivel', 'training_id', 'sustance_id'];
 
     /**
      * Relation one to one reverse Training
      */
     public function training(){
-        $this->belongsTo(Training::class);
+        return $this->belongsTo(Training::class);
     }
 
     /**
-     * Relation many to many Sustances
+     * Relation one to one reverse Sustances
      */
-    public function sustances(){
-        $this->hasMany(Sustance::class);
-    }
-
-    /**
-     * Relation many to many Sustances
-     */
-    public function searchPlaces(){
-        $this->hasMany(Searchplace::class);
+    public function sustance(){
+        return $this->belongsTo(Sustance::class);
     }
 }

@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class technique extends Model
 {
     use HasFactory;
 
     protected $fillable = ['id', 'name'];
     
     /**
-     * Relation one to many Obedicence
+     * Relation one to many Trainings
      */
-    public function obediences(){
-        return $this->hasMany(Obedience::class);
+    public function trainings(){
+        return $this->hasMany(Training::class);
     }
 }

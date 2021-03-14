@@ -15,21 +15,21 @@ class CreateObediencesTable extends Migration
     {
         Schema::create('obediences', function (Blueprint $table) {
             $table->id();
-            $table->time('time')->nullable();
+            $table->integer('duration');
             $table->integer('positives');
             $table->integer('negatives');
-            $table->integer('failures');
-            $table->unsignedBigInteger('dog_id');
+            $table->integer('failures')->nullable();
             $table->unsignedBigInteger('training_id');
-            $table->foreign('dog_id')
-                ->references('id')
-                ->on('dogs')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-             $table->foreign('training_id')
+            $table->unsignedBigInteger('order_id')->nullable();
+            $table->foreign('training_id')
                 ->references('id')
                 ->on('trainings')
                 ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('order_id')
+                ->references('id')
+                ->on('orders')
+                ->onDelete('set null')
                 ->onUpdate('cascade');
             $table->timestamps();
         });

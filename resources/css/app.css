@@ -62,6 +62,22 @@
     @apply border-indigo-300 ring ring-indigo-200 ring-opacity-50 shadow-sm
 }
 
+.option{
+    @apply border-gray-300  rounded-md 
+}
+
+.option:focus{
+    @apply border-indigo-300 ring ring-indigo-200 ring-opacity-50 shadow-sm
+}
+
 .error{
     @apply text-sm text-red-600 italic
+}
+
+.a_volver{
+    @apply px-2 py-2 uppercase text-lg font-bold
+}
+
+.a_volver:hover{
+    @apply opacity-50
 }

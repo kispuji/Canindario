@@ -5,8 +5,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Workers;
-use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -33,7 +33,7 @@ class SeccionTrabajadores extends Component
         'number' => 'max:500',
         'town' => 'max:25',
         'city' => 'max:25',
-        'cp' =>  'numeric|max:5',       
+        'cp' =>  'max:5',       
         'country' => 'max:25',
     ];
 
@@ -59,15 +59,13 @@ class SeccionTrabajadores extends Component
 
         $existenTrabajadores = false;
 
-        if(sizeof($trabajadores) > 0){
-            $existenTrabajadores = true;
-        }
+        if(sizeof($trabajadores) > 0) $existenTrabajadores = true;
 
         return view('livewire.seccion-trabajadores', compact('trabajadores', 'existenTrabajadores'));
     }
 
     /**
-     * Crear trabajadores
+     * Insertar trabajadores
      */
     public function guardar(){
 

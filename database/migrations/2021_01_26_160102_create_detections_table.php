@@ -17,21 +17,21 @@ class CreateDetectionsTable extends Migration
             $table->id();
             $table->integer('positives');
             $table->integer('negatives');
-            $table->integer('failures');
-            $table->time('search_time');
-            $table->time('focus_time');
-            $table->string('nivel')->nullable();
-            $table->unsignedBigInteger('dog_id');
+            $table->integer('failures')->nullable();
+            $table->integer('search_time');
+            $table->integer('focus_time');
+            $table->string('nivel', 45)->nullable();
             $table->unsignedBigInteger('training_id');
-            $table->foreign('dog_id')
-            ->references('id')
-            ->on('dogs')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-         $table->foreign('training_id')
+            $table->unsignedBigInteger('sustance_id')->nullable();
+            $table->foreign('training_id')
             ->references('id')
             ->on('trainings')
             ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->foreign('sustance_id')
+            ->references('id')
+            ->on('sustances')
+            ->onDelete('set null')
             ->onUpdate('cascade');
             $table->timestamps();
         });

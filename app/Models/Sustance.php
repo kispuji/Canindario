@@ -4,16 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Detection;
 
 class Sustance extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['id', 'name'];
+
     /**
-     * Relation many to many Detection
+     * Relation one to many Detection
      */
     public function detections(){
-        $this->belongsToMany(Detection::class);
+        return $this->hasMany(Detection::class);
     }
 }

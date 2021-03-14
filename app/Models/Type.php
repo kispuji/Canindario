@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Type extends Model
 {
     use HasFactory;
 
     protected $fillable = ['id', 'name'];
     
     /**
-     * Relation one to many Obedicence
+     * Relation one to many Daily
      */
-    public function obediences(){
-        return $this->hasMany(Obedience::class);
+    public function dailies(){
+        return $this->hasMany(Daily::class);
     }
+    
 }

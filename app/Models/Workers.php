@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Address;
+
 
 class Workers extends Model
 {
@@ -25,5 +24,19 @@ class Workers extends Model
      */
     public function address(){
         return $this->hasOne(Address::class);
+    }
+
+    /**
+     * Relation one to many with Dog
+     */
+    public function dogs(){
+        return $this->hasMany(Dog::class, 'worker_id');
+    }
+
+    /**
+     * Relation one to many with Dailies
+     */
+    public function trainings(){
+        return $this->hasMany(Training::class);
     }
 }

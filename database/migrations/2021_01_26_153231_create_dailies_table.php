@@ -15,20 +15,19 @@ class CreateDailiesTable extends Migration
     {
         Schema::create('dailies', function (Blueprint $table) {
             $table->id();
-            $table->string('type', 45);
-            $table->time('duration');
-            $table->double('meters');
-            $table->unsignedBigInteger('dog_id');
+            $table->integer('duration');
+            $table->integer('meters');
             $table->unsignedBigInteger('training_id');
-            $table->foreign('dog_id')
-                ->references('id')
-                ->on('dogs')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->unsignedBigInteger('type_id')->nullable();
             $table->foreign('training_id')
                 ->references('id')
                 ->on('trainings')
                 ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('type_id')
+                ->references('id')
+                ->on('types')
+                ->onDelete('set null')
                 ->onUpdate('cascade');
             $table->timestamps();
         });
