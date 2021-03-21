@@ -7,6 +7,7 @@ use App\Http\Livewire\SeccionPerros;
 use App\Http\Livewire\SeccionEntBusqueda;
 use App\Http\Livewire\SeccionEntDiarios;
 use App\Http\Livewire\SeccionEntObediencia;
+use App\Http\Livewire\Informes;
 
 
 
@@ -29,7 +30,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-//Cambiar vistas
 Route::middleware(['auth:sanctum', 'verified'])->get('/trabajadores', 
 SeccionTrabajadores::class)->name('trabajadores');
 
@@ -47,6 +47,10 @@ SeccionEntObediencia::class)->name('obediencia');
 Route::middleware(['auth:sanctum', 'verified'])->get('/entrenamientos/busqueda', 
 SeccionEntBusqueda::class)->name('busqueda');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/informes', function () {
-    return view('dashboard');
-})->name('informes');
+Route::middleware(['auth:sanctum', 'verified'])->get('/informes', 
+Informes::class)->name('informes');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/informePDF', function () {
+    return view('informePDF');
+})->name('informePDF');
+

@@ -4,12 +4,12 @@
     </h2>
 </x-slot>
 <div>
-    <div class="px-4 pt-4">
+    <div class="px-4 py-4">
         <a href="{{url('entrenamientos')}}" class="a_volver">< Volver</a>
     </div>
     <div>
         <div class="container mx-auto bg-white rounded-xl overflow-hidden">
-            <div class="px-2 py-2 w-80">
+            <div class="px-2 py-2 w-100">
                 <h3 class="font-bold text-md text-gray-700 uppercase">{{$titulo}} un entrenamiento de obediencia</h3>
             </div>
             {{-- Formulario --}}          
@@ -168,7 +168,7 @@
                         <tbody class="divide-y divide-gray-200">
                             @foreach ($entrenamientos as $entreno)
                             <tr class="text-sm text-gray-500 text-center">
-                                <td class="px-3 py-4">{{$entreno->date}}</td>
+                                <td class="px-3 py-4">{{$entreno->date->format('d-m-Y')}}</td>
                                 <td class="px-3 py-4">{{$entreno->time}}</td>
                                 <td class="px-3 py-4">{{$entreno->series}}</td>
                                 <td class="px-3 py-4">{{$entreno->zone != null ? $entreno->zone : 'No info'}}</td>

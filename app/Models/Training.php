@@ -9,6 +9,11 @@ class Training extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'date' => 'date:d-m-Y',
+    ];
+
+
     protected $fillable = ['date', 'zone', 'time', 'series', 'criterion', 'user_id',
     'worker_id', 'dog_id', 'technique_id'];
     

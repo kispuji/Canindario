@@ -33,11 +33,12 @@
         </div>
 
         {{-- Page Content --}}
-        <div class="bg-gray-100 my-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div class="bg-gray-100 min-h-screen h-full py-6 px-4 sm:px-6 lg:px-8">
             {{$slot}}
         </div>
-
-        <x-footer></x-footer>
+        <div class="inset-0">
+            <x-footer></x-footer>
+        </div>
         @stack('modals')
 
         @livewireScripts

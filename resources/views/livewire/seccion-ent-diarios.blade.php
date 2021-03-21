@@ -127,7 +127,7 @@
                     <table>
                         <thead class="bg-gray-600 border-gray-600">
                             <tr class="text-xs font-medium text-white uppercase text-center tracking-wider">
-                                <th class="px-6 py-3">Fecha</th>
+                                <th class="px-12 py-3">Fecha</th>
                                 <th class="px-6 py-3">Hora</th>
                                 <th class="px-6 py-3">Series</th>
                                 <th class="px-6 py-3">Zona</th>
@@ -143,7 +143,7 @@
                         <tbody class="divide-y divide-gray-200">
                             @foreach ($entrenamientos as $entreno)
                             <tr class="text-sm text-gray-500 text-center">
-                                <td class="px-8 py-4">{{$entreno->date}}</td>
+                                <td class="px-6 py-4">{{$entreno->date->format('d-m-Y')}}</td>
                                 <td class="px-8 py-4">{{$entreno->time}}</td>
                                 <td class="px-8 py-4">{{$entreno->series}}</td>
                                 <td class="px-8 py-4">{{$entreno->zone != null ? $entreno->zone : 'No info'}}</td>

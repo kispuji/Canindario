@@ -19,7 +19,7 @@ class SeccionEntBusqueda extends Component
     use WithPagination;
 
     public $date, $time, $series, $zone, $sustance, $searchTime, $focusTime, $positives, $negatives,
-    $failures, $nivel, $guide, $dog_id, $criterion, $training_id, $comprobarSeries;
+    $failures, $nivel, $guide, $dog_id, $training_id, $comprobarSeries;
 
     public $action = "guardar";
 
@@ -58,7 +58,6 @@ class SeccionEntBusqueda extends Component
         'focusTime' => 'tiempo de focalización',
         'guide' =>  'guía',       
         'dog_id' => 'perro',
-        'criterion' => 'criterio',
     ];
 
     /**
@@ -95,7 +94,6 @@ class SeccionEntBusqueda extends Component
                 'time' => $this->time,
                 'series' => $this->series,
                 'zone' => $this->zone,
-                'criterion' => $this->criterion,
                 'user_id' => Auth::id(),
                 'worker_id' => $this->guide,
                 'dog_id' => $this->dog_id,
@@ -117,8 +115,7 @@ class SeccionEntBusqueda extends Component
 
         
         $this->reset(['date', 'time', 'series', 'zone', 'sustance', 'searchTime', 'focusTime', 'nivel',
-        'positives', 'negatives', 'failures', 'guide', 'dog_id', 'criterion', 'training_id', 'action',
-        'comprobarSeries']);
+        'positives', 'negatives', 'failures', 'guide', 'dog_id','training_id', 'action', 'comprobarSeries']);
     }
 
     /**
@@ -133,7 +130,6 @@ class SeccionEntBusqueda extends Component
         $this->time = $entreno->time;
         $this->series = $entreno->series;      
         $this->zone = $entreno->zone;
-        $this->criterion = $entreno->criterion;
         $this->guide = $entreno->worker_id;
         $this->dog_id = $entreno->dog_id;
         $this->searchTime = $entreno->detection->search_time;
@@ -162,7 +158,6 @@ class SeccionEntBusqueda extends Component
                 'time' => $this->time,
                 'series' => $this->series,
                 'zone' => $this->zone,
-                'criterion' => $this->criterion,
                 'worker_id' => $this->guide,
                 'dog_id' => $this->dog_id
             ]);
@@ -179,8 +174,8 @@ class SeccionEntBusqueda extends Component
          
 
         $this->reset(['date', 'time', 'series', 'zone', 'sustance', 'searchTime', 'focusTime', 'nivel',
-        'positives', 'negatives', 'failures', 'guide', 'dog_id', 'criterion', 'training_id', 'action', 
-        'titulo', 'comprobarSeries']);
+        'positives', 'negatives', 'failures', 'guide', 'dog_id','training_id', 'action', 'titulo',
+        'comprobarSeries']);
     }
 
     /**
@@ -196,8 +191,8 @@ class SeccionEntBusqueda extends Component
      */
     public function resetear(){
         $this->reset(['date', 'time', 'series', 'zone', 'sustance', 'searchTime', 'focusTime', 'nivel',
-        'positives', 'negatives', 'failures', 'guide', 'dog_id', 'criterion', 'training_id', 'action',
-        'titulo', 'comprobarSeries']);
+        'positives', 'negatives', 'failures', 'guide', 'dog_id', 'training_id', 'action', 'titulo',
+        'comprobarSeries']);
     }
 
     /**

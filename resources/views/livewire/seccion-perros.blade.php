@@ -4,6 +4,9 @@
     </h2>
 </x-slot>
 <div>
+    <div class="px-4 py-4">
+        <a href="{{url('dashboard')}}" class="a_volver">< Volver</a>
+    </div>
     <div class="container mx-auto bg-white rounded-xl overflow-hidden">
         <div class="px-2 py-2 w-80">
             <h3 class="font-bold text-md text-gray-700 uppercase">{{$titulo}} un perro</h3>

@@ -1,5 +1,5 @@
-<div class="h-10 w-full bg-white border-t border-gray-100">
-    <footer class=" flex justify-between py-2 italic text-xs  bg-white border-t-2 border-gray-300">
+<div class="bg-white border-t border-gray-100">
+    <footer class=" flex justify-between py-2 italic text-xs bg-white border-t-2 border-gray-300">
         <div class="mx-4 inline">
             &copy; 2021 Canindario
         </div>

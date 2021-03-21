@@ -4,12 +4,12 @@
     </h2>
 </x-slot>
 <div>
-    <div class="px-4 pt-4">
+    <div class="px-4 py-4">
         <a href="{{url('entrenamientos')}}" class="a_volver">< Volver</a>
     </div>
     <div>
         <div class="container mx-auto bg-white rounded-xl overflow-hidden">
-            <div class="px-2 py-2 w-80">
+            <div class="px-2 py-2 w-100">
                 <h3 class="font-bold text-md text-gray-700 uppercase">{{$titulo}} un entrenamiento de búsqueda</h3>
             </div>
             {{-- Formulario --}}          
@@ -139,14 +139,6 @@
                         <p class="error">{{$message}}</p>
                     @enderror
                 </div>
-                {{-- Criterio --}}
-                <div class="px-2 py-2 w-80">
-                    <label for="criterio" class="label">Criterio</label>
-                    <textarea wire:model="criterion" class="input my-2 block w-full" name="criterion" id="criterio" cols="30"></textarea>
-                </div>
-                @error('criterion')
-                    <p class="error">{{$message}}</p>
-                @enderror
             </div>
                 
             {{-- Botones --}}
@@ -179,14 +171,13 @@
                                 <th class="px-3 py-3">Nivel</th>
                                 <th class="px-5 py-3">Guía</th>
                                 <th class="px-3 py-3">Perro</th>
-                               {{--  <th class="px-3 py-3">Criterio</th> --}}
                                 <th class="px-3 py-3">Acciones</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                             @foreach ($entrenamientos as $entreno)
                             <tr class="text-sm text-gray-500 text-center">
-                                <td class="px-2 py-4">{{$entreno->date}}</td>
+                                <td class="px-2 py-4">{{$entreno->date->format('d-m-Y')}}</td>
                                 <td class="px-3 py-4">{{$entreno->time}}</td>
                                 <td class="px-3 py-4">{{$entreno->series}}</td>
                                 <td class="px-3 py-4">{{$entreno->zone != null ? $entreno->zone : 'No info'}}</td>
@@ -199,7 +190,6 @@
                                 <td class="px-3 py-4">{{$entreno->detection->nivel != null ? $entreno->detection->nivel : 'No info'}}</td>
                                 <td class="px-5 py-4">{{$entreno->worker->name . " " . $entreno->worker->surname}}</td>
                                 <td class="px-3 py-4">{{$entreno->dog->name}}</td>
-                                {{-- <td class="px-4 py-4">{{$entreno->criterion != null ? $entreno->criterion : 'No info'}}</td> --}}
                                 <td class="px-3 py-4">
                                     <button wire:click="editar({{$entreno}})"  class="button-edit">Editar</button>
                                     <button wire:click="eliminar({{$entreno}})"  class="button-delete">Eliminar</button>
