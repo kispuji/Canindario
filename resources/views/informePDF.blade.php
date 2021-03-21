@@ -5,6 +5,6 @@
         </h2>
     </x-slot>
     <div>
-            
+        <h1></h1>
     </div>
 </x-app-layout>

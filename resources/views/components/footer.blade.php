@@ -4,11 +4,11 @@
             &copy; 2021 Canindario
         </div>
         <div class="mx-4 text-center inline">
-            Teléfono: 666-666-666
-            Correo: jf@outlook.com
+            Teléfono: 647-75-30-35 --- 
+            Correo: canindarioproject@gmail.com
         </div>
         <div class="mx-4 inline">
-            Dirección: Calle inventada Nº3 1º
+            Dirección: Calle Cannaregio Nº12 7ºB
             50021, Zaragoza
         </div>
     </footer>

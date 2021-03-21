@@ -8,9 +8,9 @@
         <a href="{{url('entrenamientos')}}" class="a_volver">< Volver</a>
     </div>
     <div>
-        <div class="container mx-auto bg-white rounded-xl overflow-hidden">
+        <div class="fondo_formulario">
             <div class="px-2 py-2 w-80">
-                <h3 class="font-bold text-md text-gray-700 uppercase">{{$titulo}} un entrenamiento diario</h3>
+                <h3 class="h3">{{$titulo}} un entrenamiento diario</h3>
             </div>
             {{-- Formulario --}}          
             <div class="flex flex-wrap justify-center">
@@ -112,7 +112,7 @@
             </div>
                 
             {{-- Botones --}}
-            <div class="flex items-center justify-end px-4 py-3 bg-gray-600 text-right sm:px-6">
+            <div class="boton_formulario sm:px-6">
                 @if ($action == 'guardar')
                     <button wire:click="{{$action}}" class="button-actualizar">Registrar</button>
                 @else
@@ -121,12 +121,12 @@
                 @endif
             </div>    
         </div>
-        <div class="container mx-auto my-4 bg-white rounded-xl overflow-hidden">
+        <div class="fondo_tablas">
             @if ($existenEntrenamientos)
-                <div class="w-full rounded-lg shadow overflow-hidden">
+                <div class="tabla">
                     <table>
                         <thead class="bg-gray-600 border-gray-600">
-                            <tr class="text-xs font-medium text-white uppercase text-center tracking-wider">
+                            <tr class="titulo_tabla">
                                 <th class="px-12 py-3">Fecha</th>
                                 <th class="px-6 py-3">Hora</th>
                                 <th class="px-6 py-3">Series</th>
@@ -142,7 +142,7 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                             @foreach ($entrenamientos as $entreno)
-                            <tr class="text-sm text-gray-500 text-center">
+                            <tr class="fila_registro">
                                 <td class="px-6 py-4">{{$entreno->date->format('d-m-Y')}}</td>
                                 <td class="px-8 py-4">{{$entreno->time}}</td>
                                 <td class="px-8 py-4">{{$entreno->series}}</td>
@@ -161,14 +161,14 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="text-sm font-bold px-6 py-4 bg-gray-500 border-t border-gray-600">
+                    <div class="paginacion">
                         {{$entrenamientos->links()}}
                     </div>
             </div>
             @else
                 <div class="flex flex-wrap justify-center">
                     <div class="my-8">
-                        <h2 class="text-gray-600 font-bold text-lg">Actualmente no hay ningun entenamiento diario dado de alta</h2>
+                        <h2 class="sin_registros">Actualmente no hay ningun entenamiento diario dado de alta</h2>
                     </div>
                 </div>
             @endif   

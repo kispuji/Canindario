@@ -10,9 +10,9 @@
     <div>
         @if (!$existeInforme)
         {{-- Formulario --}}   
-        <div class="container mx-auto bg-white rounded-xl overflow-hidden">
+        <div class="fondo_formulario">
             <div class="px-2 py-2 w-100">
-                <h3 class="font-bold text-md text-gray-700 uppercase">Genera un {{$titulo}}</h3>
+                <h3 class="h3">Genera un {{$titulo}}</h3>
             </div>       
             <div class="flex flex-wrap justify-center py-4">
                 <!-- Fecha desde-->
@@ -66,7 +66,7 @@
             </div>
                 
             {{-- Botones --}}
-            <div class="flex items-center justify-end px-4 py-3 bg-gray-600 text-right sm:px-6">
+            <div class="boton_formulario sm:px-6">
                     {{-- <a href="{{url('informePDF')}}"> --}}<button wire:click="{{$action}}" class="button-actualizar">Crear Informe</button>{{-- </a> --}}
             </div>    
         </div>
@@ -75,15 +75,15 @@
         @if ($existeInforme)
             <button wire:click="{{$action}}" class="button-edit mr-2">Crear PDF</button>
             <button wire:click="resetear" class="button-delete">Resetear</button>
-            <div class="container mx-auto my-4 bg-white  rounded-xl overflow-hidden">
-                <div class="w-full rounded-lg shadow overflow-hidden mb-6">
+            <div class="fondo_tablas">
+                <div class="tabla">
                     {{-- Tabla diarios --}}
                     <table class="w-full">
                         <thead class="bg-gray-600">
-                            <tr class="text-xs font-medium text-white uppercase text-center tracking-wider">
+                            <tr class="titulo_tabla">
                                 <th colspan="11" class="px-8 py-3 text-center">Diarios</th>
                             </tr>
-                            <tr class="bg-gray-300 border-gray-400 text-xs font-medium uppercase text-center tracking-wider">
+                            <tr class="fila_tabla">
                                 <th class="px-8 py-3">Tipo</th>
                                 <th class="px-8 py-3">Tiempo (Minutos)</th>                           
                                 <th class="px-3 py-3">Kilometros</th>
@@ -91,7 +91,7 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                             @foreach ($tipos as $tipo)
-                            <tr class="text-sm text-gray-500 text-center">
+                            <tr class="fila_registro">
                                 <td class="px-2 py-4">{{$tipo->name}}</td>
                                 @foreach ($totalesDiarios["$tipo->name"] as $item)
                                     <td class="px-3 py-4">{{$item != null ? $item : 0}}</td>
@@ -100,19 +100,17 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="text-sm font-bold px-6 py-4 bg-gray-600 border-t border-gray-600">
-
-                    </div>
+                    <div class="paginacion"></div>
                 </div>
 
                 <div class="w-full rounded-lg shadow overflow-hidden mb-6">
                     {{-- Tabla obediencia --}}
                     <table class="w-full">
                         <thead class="bg-gray-600">
-                            <tr class="text-xs font-medium text-white uppercase text-center tracking-wider">
+                            <tr class="titulo_tabla">
                                 <th colspan="11" class="px-8 py-3 text-center">Obediencia</th>
                             </tr>
-                            <tr class="bg-gray-300 border-gray-400 text-xs font-medium uppercase text-center tracking-wider">
+                            <tr class="fila_tabla">
                                 <th class="px-8 py-3">Orden</th>
                                 <th class="px-8 py-3">Porcentaje de aciertos</th>                           
                                 <th class="px-3 py-3">Porcentaje de fallos</th>
@@ -121,7 +119,7 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                             @foreach ($ordenes as $orden)
-                            <tr class="text-sm text-gray-500 text-center">
+                            <tr class="fila_registro">
                                 <td class="px-2 py-4">{{$orden->name}}</td>
                                 @foreach ($totalesObediencia["$orden->name"] as $item)
                                     <td class="px-3 py-4">{{$item != null ? $item : 0}}</td>
@@ -130,19 +128,17 @@
                          @endforeach
                         </tbody>
                     </table>
-                    <div class="text-sm font-bold px-6 py-4 bg-gray-600 border-t border-gray-600">
-
-                    </div>
+                    <div class="paginacion"></div>
                 </div>
 
                 <div class="w-full rounded-lg shadow overflow-hidden">
                     {{-- Tabla busqueda --}}
                     <table class="w-full">
                         <thead class="bg-gray-600">
-                            <tr class="text-xs font-medium text-white uppercase text-center tracking-wider">
+                            <tr class="titulo_tabla">
                                 <th colspan="11" class="px-8 py-3 text-center">Búsqueda</th>
                             </tr>
-                            <tr class="bg-gray-300 border-gray-400 text-xs font-medium uppercase text-center tracking-wider">
+                            <tr class="fila_tabla">
                                 <th class="px-8 py-3">Sustancias</th>
                                 <th class="px-8 py-3">Pocentaje aciertos</th>                           
                                 <th class="px-3 py-3">Porcentaje fallos</th>
@@ -151,7 +147,7 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                          @foreach ($sustancias as $sustancia)
-                            <tr class="text-sm text-gray-500 text-center">
+                            <tr class="fila_registro">
                                 <td class="px-2 py-4">{{$sustancia->name}}</td>
                                 @foreach ($totalesBusqueda["$sustancia->name"] as $item)
                                     <td class="px-3 py-4">{{$item != null ? $item : 0}}</td>
@@ -160,9 +156,7 @@
                          @endforeach
                         </tbody>
                     </table>
-                    <div class="text-sm font-bold px-6 py-4 bg-gray-600 border-t border-gray-600">
-
-                    </div>
+                    <div class="paginacion"></div>
                 </div>
             </div>
         @endif

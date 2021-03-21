@@ -10,6 +10,7 @@ use App\Models\Sustance;
 use App\Models\Training;
 use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class Informes extends Component
 {
@@ -186,8 +187,9 @@ class Informes extends Component
     }
 
     public function mostrarPDF(){
-        $titulo = 'prueba';
-        return redirect()->route('informePDF', ['titulo' => $titulo]);
+       
+        return redirect()->route('informePDF', ['titulo' => 'pureba']);
+        
     }
 
     /**
