@@ -66,7 +66,7 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 
                 <!-- Teams Dropdown -->
-                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                {{-- @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
                         <x-jet-dropdown align="right" width="60">
                             <x-slot name="trigger">
@@ -113,7 +113,7 @@
                             </x-slot>
                         </x-jet-dropdown>
                     </div>
-                @endif
+                @endif --}}
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
@@ -149,11 +149,11 @@
                                     {{ __('Cuenta') }}
                                 </x-jet-dropdown-link>
 
-                                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                               {{--  @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                     <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                         {{ __('API Tokens') }}
                                     </x-jet-dropdown-link>
-                                @endif
+                                @endif --}}
 
                                 <div class="border-t border-gray-100"></div>
 
@@ -169,9 +169,9 @@
                                 </form>
                             </x-slot>
                         </x-jet-dropdown>
-                    @else
+{{--                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrar</a>
+                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrar</a> --}}
                     @endauth
                 </div>
             </div>
@@ -228,11 +228,11 @@
                         {{ __('Cuenta') }}
                     </x-jet-responsive-nav-link>
 
-                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                   {{--  @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                             {{ __('API Tokens') }}
                         </x-jet-responsive-nav-link>
-                    @endif
+                    @endif --}}
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
@@ -246,7 +246,7 @@
                     </form>
 
                     <!-- Team Management -->
-                    @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                   {{--  @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                         <div class="border-t border-gray-200"></div>
 
                         <div class="block px-4 py-2 text-xs text-gray-400">
@@ -274,18 +274,18 @@
                         @foreach (Auth::user()->allTeams() as $team)
                             <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link" />
                         @endforeach
-                    @endif
+                    @endif --}}
                 </div>
             </div>
         @else
-            <div class="py-1 border-t border-gray-200">
+            {{-- <div class="py-1 border-t border-gray-200">
                 <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('Login')">
                     {{__('Login')}}
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('Register')">
                     {{__('Registrar')}}
                 </x-jet-responsive-nav-link>
-            </div>
+            </div> --}}
         @endauth
     </div>
 </nav>

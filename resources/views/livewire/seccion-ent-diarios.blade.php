@@ -150,7 +150,7 @@
                                 <td class="px-8 py-4">{{$entreno->daily->type->name}}</td>
                                 <td class="px-8 py-4">{{$entreno->daily->duration}}</td>
                                 <td class="px-8 py-4">{{$entreno->daily->meters}}</td>
-                                <td class="px-8 py-4">{{$entreno->worker->name . " " . $entreno->worker->surname}}</td>
+                                <td class="px-8 py-4">{{$entreno->worker != null ? $entreno->worker->name . " " . $entreno->worker->surname : 'No info'}}</td>
                                 <td class="px-8 py-4">{{$entreno->dog->name}}</td>
                                 <td class="px-8 py-4">{{$entreno->criterion != null ? $entreno->criterion : 'No info'}}</td>
                                 <td class="px-8 py-4">

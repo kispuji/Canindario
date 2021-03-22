@@ -177,7 +177,7 @@
                                 <td class="px-3 py-4">{{$entreno->obedience->positives}}</td>
                                 <td class="px-3 py-4">{{$entreno->obedience->negatives}}</td>
                                 <td class="px-3 py-4">{{$entreno->obedience->failures >= 0 && $entreno->obedience->failures != null ? $entreno->obedience->failures : 'No info'}}</td>
-                                <td class="px-5 py-4">{{$entreno->worker->name . " " . $entreno->worker->surname}}</td>
+                                <td class="px-5 py-4">{{$entreno->worker != null ? $entreno->worker->name . " " . $entreno->worker->surname : 'No info'}}</td>
                                 <td class="px-3 py-4">{{$entreno->dog->name}}</td>
                                 <td class="px-8 py-4">{{$entreno->criterion != null ? $entreno->criterion : 'No info'}}</td>
                                 <td class="px-3 py-4">

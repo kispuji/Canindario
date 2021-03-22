@@ -188,7 +188,7 @@
                                 <td class="px-3 py-4">{{$entreno->detection->search_time != null ? $entreno->detection->search_time : 'No info'}}</td>
                                 <td class="px-3 py-4">{{$entreno->detection->focus_time != null ? $entreno->detection->focus_time : 'No info'}}</td>
                                 <td class="px-3 py-4">{{$entreno->detection->nivel != null ? $entreno->detection->nivel : 'No info'}}</td>
-                                <td class="px-5 py-4">{{$entreno->worker->name . " " . $entreno->worker->surname}}</td>
+                                <td class="px-5 py-4">{{$entreno->worker != null ? $entreno->worker->name . " " . $entreno->worker->surname : 'No info'}}</td>
                                 <td class="px-3 py-4">{{$entreno->dog->name}}</td>
                                 <td class="px-3 py-4">
                                     <button wire:click="editar({{$entreno}})"  class="button-edit">Editar</button>
