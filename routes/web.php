@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SeccionTrabajadores;
 use App\Http\Livewire\SeccionPerros;
@@ -50,7 +50,5 @@ SeccionEntBusqueda::class)->name('busqueda');
 Route::middleware(['auth:sanctum', 'verified'])->get('/informes', 
 Informes::class)->name('informes');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/informePDF', function () {
-    return view('informePDF');
-})->name('informePDF');
+Route::middleware(['auth:sanctum', 'verified'])->get('/informePDF/{dateTo}/{dateFrom}/{guide}/{dog}', [PDFController::class, 'crearPDF'])->name('informePDF');
 

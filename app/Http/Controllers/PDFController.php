@@ -1,205 +1,45 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Controllers;
 
-use Livewire\Component;
-use App\Models\Workers;
-use App\Models\Dog;
 use App\Models\Order;
 use App\Models\Sustance;
-use App\Models\Training;
 use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Training;
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
-class Informes extends Component
+class PDFController extends Controller
 {
-    //Variables del componente
-    public $dateFrom, $dateTo, $guide, $dog_id, $comprobarFechas;
-    public $titulo = 'Informe';
-    public $action = "crear";
-    //Acordarme de cambiar
-    public $existeInforme = false;
-
-    protected $rules =[
-        'dateFrom' => 'required|date',
-        'dateTo' => 'required|date',
-        'guide' =>  'required|gt:0',       
-        'dog_id' => 'required|gt:0',
-        'comprobarFechas' => 'boolean'
-    ];
-
-    protected $messages = [
-        'guide.gt' => 'El guía no puede ser el guía por defecto',
-        'dog_id.gt' => 'El perro no puede ser el perro por defecto',
-        'comprobarFechas.boolean' => 'La fecha de inicio no puede ser menor que la fecha final'
-    ];
-
-    protected $validationAttributes = [
-        'dateFrom' => 'fecha inicio',
-        'dateTo' => 'fecha fin',
-        'guide' =>  'guía',       
-        'dog_id' => 'perro'
-    ];
-
-    //Arrays con valores del informe para entrenamiento diario
-    public $totalesDiarios = [
-        'Paseo'=> [
-            'tiempoTotal' => 0,
-            'kmTotales' => 0
-        ],
-        'Carrera' => [
-            'tiempoTotal' => 0,
-            'kmTotales' => 0
-        ]
-    ];
-    
-    //Array con los valores del informe para entrenamiento obediencia
-    public $totalesObediencia = [
-        'Sit' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Platz' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Fuus' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Quieto' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Laser' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Izquierda' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Derecha' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Sigue' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Foco' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ]
-    ];
-
-    //Array con los valores del informe para entrenamiento búsqueda
-    public $totalesBusqueda = [
-        'Goma2' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Pg2' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Pg3' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Pentrita' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Tritila' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Clorato' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Nitrato' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Amonal' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Kom' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ],
-        'Olor Personal' => [
-            'aciertos' => 0,
-            'fallos' => 0,
-            'tiempo' => 0
-        ]
-    ];
 
     /**
-     * Método para renderizar la vista del componente.
+     * Método para crear PDF una vista
      */
-    public function render()
-    {
-        $trabajadores = Workers::latest('id')->where('user_id', '=', Auth::id())->get();
-        $perros = Dog::latest('id')->where('user_id', '=', Auth::id())->get();
+    public function crearPDF($dateTo, $dateFrom, $guide, $dog){
+        $this->dateFrom = $dateFrom;
+        $this->dateTo = $dateTo;
+        $this->guide = $guide;
+        $this->dog_id = $dog;
         $sustancias = Sustance::all();
         $ordenes = Order::all();
         $tipos = Type::all();
-    
-        return view('livewire.informes', compact('trabajadores', 'perros', 'sustancias', 'ordenes',
-        'tipos'));
 
+        $totalesDiarios = $this->calcularDiarios();
+        $totalesObediencia = $this->calcularObediencia();
+        $totalesBusqueda = $this->calcularBusqueda();
+
+        $pdf = PDF::loadView('informePDF', compact('totalesDiarios', 'totalesObediencia', 'totalesBusqueda',
+        'sustancias', 'tipos', 'ordenes'));
+
+        return $pdf->stream('informe.pdf');
     }
 
-    /**
-     * Método para mostrar el informe con los valores seleccionados.
-     */
-    public function crear(){
-        $this->comprobarFechas = $this->comprobarFechas();
-        $this->validate();
-        $this->existeInforme = true;
-        $this->action = "mostrarPDF";
-        $this->totalesDiarios = $this->calcularDiarios();
-        $this->totalesObediencia = $this->calcularObediencia();
-        $this->totalesBusqueda = $this->calcularBusqueda();
-    }
-
-    public function mostrarPDF(){
-        $dateFrom = $this->dateFrom;
-        $dateTo = $this->dateTo;
-        $guide = $this->guide;
-        $dog = $this->dog_id;
-        return redirect()->route('informePDF', compact('dateFrom', 'dateTo', 'guide', 'dog'));
-    }
-
-    /**
-     * Resetear valores variables.
-     */
-    public function resetear(){
-        $this->reset(['dateFrom', 'dateTo', 'guide', 'dog_id', 'existeInforme', 'totalesDiarios',
-        'totalesObediencia', 'totalesBusqueda', 'titulo', 'action', 'comprobarFechas']);
-    }
+    //Variables para calcular entrenamientos
+    public $guide;
+    public $dog_id;
+    public $dateFrom;
+    public $dateTo;
 
     /**
      * Método para calcular los valores del informe para los entrenamientos Diarios
@@ -524,18 +364,5 @@ class Informes extends Component
         ];
 
         return $arrayEntrenos;
-    }
-
-    /**
-     * Función para validar que la fecha de inicio no es menor que la fecha final.
-     */
-    private function comprobarFechas(){
-        
-        $this->comprobarFechas = true;
-
-        if($this->dateFrom > $this->dateTo) $this->comprobarFechas = -1;
-
-        return $this->comprobarFechas;
-
     }
 }

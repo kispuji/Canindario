@@ -14,6 +14,10 @@ use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Componente para crear, listar, actualizar y eliminar entrenamientos de búsqueda.
+ * Contiene validación de formularios y paginación.
+ */
 class SeccionEntBusqueda extends Component
 {
     use WithPagination;

@@ -12,6 +12,10 @@ use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Componente para crear, listar, actualizar y eliminar entrenamientos obediencia.
+ * Contiene validación de formularios y paginación.
+ */
 class SeccionEntObediencia extends Component
 {
     use WithPagination;

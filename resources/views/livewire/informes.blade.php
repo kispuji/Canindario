@@ -13,7 +13,7 @@
         <div class="fondo_formulario">
             <div class="px-2 py-2 w-100">
                 <h3 class="h3">Genera un {{$titulo}}</h3>
-            </div>       
+            </div>   
             <div class="flex flex-wrap justify-center py-4">
                 <!-- Fecha desde-->
                 <div class="px-2 py-2 w-80">
@@ -67,7 +67,7 @@
                 
             {{-- Botones --}}
             <div class="boton_formulario sm:px-6">
-                    {{-- <a href="{{url('informePDF')}}"> --}}<button wire:click="{{$action}}" class="button-actualizar">Crear Informe</button>{{-- </a> --}}
+                    <button wire:click="{{$action}}" class="button-actualizar">Crear Informe</button>
             </div>    
         </div>
         @endif

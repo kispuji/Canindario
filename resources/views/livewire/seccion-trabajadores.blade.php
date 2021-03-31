@@ -109,7 +109,7 @@
     <div class="fondo_tablas">
         @if ($existenTrabajadores)
             <div class="tabla">
-                <table>
+                <table class="w-full">
                     <thead class="bg-gray-600 border-gray-600">
                         <tr class="titulo_tabla">
                             <th class="px-6 py-3">Nombre</th>

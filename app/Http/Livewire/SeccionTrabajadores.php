@@ -27,7 +27,7 @@ class SeccionTrabajadores extends Component
     protected $rules =[
         'name' => 'required|max:15',
         'surname' => 'required|max:40',
-        'age' => 'numeric|gte:18|lte:100',
+        'age' => 'required|numeric|gte:18|lte:100',
         'profession' => 'max:25',
         'street' => 'max:40',
         'number' => 'max:500',

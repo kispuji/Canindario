@@ -155,7 +155,7 @@
         <div class="fondo_tablas">
             @if ($existenEntrenamientos)
                 <div class="tabla">
-                    <table>
+                    <table class="w-full">
                         <thead class="bg-gray-600 border-gray-600">
                             <tr class="titulo_tabla">
                                 <th class="px-8 py-3">Fecha</th>

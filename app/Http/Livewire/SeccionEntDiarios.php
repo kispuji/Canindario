@@ -9,12 +9,14 @@ use App\Models\Dog;
 use App\Models\Training;
 use App\Models\Type;
 use App\Models\Workers;
-use Carbon\Carbon;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-
+/**
+ * Componente para crear, listar, actualizar y eliminar entrenamientos diarios.
+ * Contiene validación de formularios y paginación.
+ */
 class SeccionEntDiarios extends Component
 {
     use WithPagination;

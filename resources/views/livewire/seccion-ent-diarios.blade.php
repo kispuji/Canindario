@@ -9,7 +9,7 @@
     </div>
     <div>
         <div class="fondo_formulario">
-            <div class="px-2 py-2 w-80">
+            <div class="px-2 py-2 w-100">
                 <h3 class="h3">{{$titulo}} un entrenamiento diario</h3>
             </div>
             {{-- Formulario --}}          
@@ -124,7 +124,7 @@
         <div class="fondo_tablas">
             @if ($existenEntrenamientos)
                 <div class="tabla">
-                    <table>
+                    <table class="w-full">
                         <thead class="bg-gray-600 border-gray-600">
                             <tr class="titulo_tabla">
                                 <th class="px-12 py-3">Fecha</th>

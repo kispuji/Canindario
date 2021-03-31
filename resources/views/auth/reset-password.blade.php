@@ -27,6 +27,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
+                <x-button-volver>{{__('Volver')}}</x-button-volver>
                 <x-jet-button>
                     {{ __('Resetear Contraseña') }}
                 </x-jet-button>

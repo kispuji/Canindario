@@ -9,7 +9,10 @@ use App\Models\Workers;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
 
-
+/**
+ * Componente para crear, listar, actualizar y eliminar perros.
+ * Contiene validación de formularios y paginación.
+ */
 class SeccionPerros extends Component
 {
     use WithPagination;
@@ -22,7 +25,7 @@ class SeccionPerros extends Component
 
     protected $rules =[
         'name' => 'required|max:15',
-        'age' => 'numeric|gte:0|lte:20',
+        'age' => 'required|numeric|gte:0|lte:20',
         'specialty' => 'max:20',
         'race' => 'max:20',
         'marking' => 'max:20',
@@ -84,7 +87,7 @@ class SeccionPerros extends Component
     }
 
     /**
-     * Editar trabajadores
+     * Editar perros
      */
     public function editar(Dog $perro){
         $this->resetErrorBag();
@@ -103,7 +106,7 @@ class SeccionPerros extends Component
     }
 
     /**
-     * Actualizar trabajadores
+     * Actualizar perros
      */
     public function actualizar(){
 
@@ -127,7 +130,7 @@ class SeccionPerros extends Component
     }
 
     /**
-     * Eliminar trabajadores
+     * Eliminar perros
      */
     public function eliminar(Dog $perro){
         $this->resetErrorBag();
